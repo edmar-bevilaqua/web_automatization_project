@@ -1,0 +1,28 @@
+[project]
+name = "rs-florestal"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Edmar Junyor Bevilaqua",email = "edmar.bevi@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests (>=2.32.3,<3.0.0)",
+    "numpy (>=2.2.3,<3.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "pyexcelerate (>=0.12.0,<0.13.0)",
+    "ipykernel (>=6.29.5,<7.0.0)",
+    "selenium (>=4.29.0,<5.0.0)",
+    "beautifulsoup4 (>=4.13.3,<5.0.0)",
+    "webdriver-manager (>=4.0.2,<5.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "rs_florestal", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
