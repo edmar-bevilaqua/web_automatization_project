@@ -2,4 +2,4 @@
 
 *.env
 
-*.xlsx
+**.xlsx
