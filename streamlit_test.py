@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 from dotenv import load_dotenv
 import os
+import pandas as pd
+import warnings
 
 load_dotenv()
 
@@ -10,6 +12,7 @@ user_login = os.getenv('USER_LOGIN')
 user_pw = os.getenv('USER_PASSWORD')
 file_path = os.getenv('XLSX_FILEPATH')
 
+warnings.filterwarnings("ignore")
 
 # Title of the application
 st.title("Credenciais para o SGF")
@@ -42,3 +45,15 @@ if st.button("Login"):
         # Redirecionar para a janela de ações
     else:
         st.error("Usuário ou senha incorretos")
+
+st.markdown("<br><br><br>", unsafe_allow_html=True)
+
+# File uploader
+uploaded_file = st.file_uploader("Adicione o seu arquivo Excel abaixo:", type=["xlsx"])
+if uploaded_file is not None:
+    temp_df = pd.read_excel(uploaded_file)
+    st.write("Escrevendo as primeiras linhas do arquivo Excel:")
+    st.write(temp_df.head(5))
+    if st.button("Usar este arquivo"):
+        df = temp_df.copy()
+        st.write("Arquivo Excel carregado com sucesso!")
