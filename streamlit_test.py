@@ -57,3 +57,20 @@ if uploaded_file is not None:
     if st.button("Usar este arquivo"):
         df = temp_df.copy()
         st.write("Arquivo Excel carregado com sucesso!")
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        col1, col2 = st.columns(2)
+
+        # Col 1 - Operations
+        # TODO: Garantee that there is only one N. Op per row (e.g. 1035/1036 cannot exist)
+        col1.header("Operações identificadas:")
+        list_nop_unique = list(df["N. Op"].unique())
+        list_nop_unique = [str(i) for i in list_nop_unique]
+        list_nop_unique.sort()
+        col1.write(pd.Series(list_nop_unique, name="N. Op"))
+        
+        # Col 2 - Fazendas
+        # TODO: Garantee that there is only one row for each Horto
+        col2.header("Hortos Florestais Identificados:")
+        list_hortos_unique = df.loc[:, ["Horto", "Projeto"]].drop_duplicates()
+        col2.write(list_hortos_unique)
