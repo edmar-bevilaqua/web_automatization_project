@@ -1,0 +1,1 @@
+Project developed to automate entries on SGF website.
